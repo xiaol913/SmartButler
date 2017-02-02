@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -31,12 +32,12 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
     private EditText et_age;
     private EditText et_desc;
     private RadioGroup mRadioGroup;
+    //性别
+    private RadioButton rb_boy, rb_girl;
     private EditText et_pass;
     private EditText et_password;
     private EditText et_email;
     private Button btnRegistered;
-    //性别
-    private boolean isMale = true;
     //Dialog
     private CustomDialog dialog;
 
@@ -58,6 +59,9 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
         et_email = (EditText) findViewById(R.id.et_email);
         btnRegistered = (Button) findViewById(R.id.btnRegistered);
         btnRegistered.setOnClickListener(this);
+        //性别
+        rb_boy = (RadioButton) findViewById(R.id.rb_boy);
+        rb_girl = (RadioButton) findViewById(R.id.rb_girl);
         //初始化Dialog
         dialog = new CustomDialog(this, 100, 100, R.layout.dialog_registering, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
         //屏外点击无效
@@ -79,17 +83,6 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(age) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(email)) {
                     //判断两次输入的密码是否一致
                     if (pass.equals(password)) {
-                        //先把性别判断一下
-                        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                                if (i == R.id.rb_boy) {
-                                    isMale = true;
-                                } else if (i == R.id.rb_girl) {
-                                    isMale = false;
-                                }
-                            }
-                        });
                         //判断简介是否为空
                         if (TextUtils.isEmpty(desc)) {
                             desc = getString(R.string.txt_nothing_typed);
@@ -97,11 +90,15 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
                         dialog.show();
                         //注册
                         MyUser user = new MyUser();
+                        //判断性别
+                        if (rb_boy.isChecked())
+                            user.setSex(true);
+                        else
+                            user.setSex(false);
                         user.setUsername(name);
                         user.setPassword(password);
                         user.setEmail(email);
                         user.setAge(Integer.parseInt(age));
-                        user.setSex(isMale);
                         user.setDesc(desc);
                         user.signUp(new SaveListener<MyUser>() {
                             @Override

@@ -100,7 +100,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         edit_user = (TextView) view.findViewById(R.id.edit_user);
         edit_user.setOnClickListener(this);
         et_username = (EditText) view.findViewById(R.id.et_username);
-//        et_sex = (EditText) view.findViewById(R.id.et_sex);
         //性别
         rb_boy = (RadioButton) view.findViewById(R.id.rb_boy);
         rb_girl = (RadioButton) view.findViewById(R.id.rb_girl);
@@ -183,7 +182,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                 //1.获得输入框的值
                 String username = et_username.getText().toString();
                 String age = et_age.getText().toString();
-//                String sex = et_sex.getText().toString();
                 String desc = et_desc.getText().toString();
                 //2.判断是否为空
                 if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(age)) {
