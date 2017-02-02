@@ -101,7 +101,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         try {
             getVersionNameCode();
-            String version = getString(R.string.txt_check_version)+ versionName;
+            String version = getString(R.string.txt_now_version)+ versionName;
             tv_version.setText(version);
         } catch (PackageManager.NameNotFoundException e) {
             tv_version.setText(R.string.txt_check_version);
