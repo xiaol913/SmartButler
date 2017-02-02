@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_name"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_username"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_sex"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioGroup
                 android:id="@+id/mRadioGroup"
@@ -79,20 +79,20 @@
 
                 <RadioButton
                     android:id="@+id/rb_boy"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:checked="true"
-                    android:text="@string/text_boy" />
+                    android:text="@string/text_boy"
+                    android:textSize="20sp" />
 
                 <RadioButton
                     android:id="@+id/rb_girl"
-                    android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/text_girl_f" />
+                    android:text="@string/text_girl_f"
+                    android:textSize="20sp" />
 
             </RadioGroup>
 
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_age"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_age"
@@ -119,8 +119,6 @@
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
-
-
         <!--简介-->
 
         <LinearLayout
@@ -133,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_desc"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_desc"
@@ -153,13 +151,23 @@
             android:textColor="@android:color/white"
             android:visibility="gone" />
 
+        <!--修改密码-->
+        <Button
+            android:id="@+id/ll_edit_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_bg"
+            android:text="@string/text_editor_password"
+            android:textColor="@android:color/white" />
+
         <TextView
             android:id="@+id/tv_courier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="@string/txt_tracking"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
@@ -175,7 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="@string/txt_search_location"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"

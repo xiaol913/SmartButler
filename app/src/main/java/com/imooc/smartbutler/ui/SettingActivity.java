@@ -24,6 +24,7 @@ import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /**
  * 项目名：  SmartButler
  * 包名：    com.imooc.smartbutler.ui
@@ -97,9 +98,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         ll_about = (LinearLayout) findViewById(R.id.ll_about);
         ll_about.setOnClickListener(this);
 
+
         try {
             getVersionNameCode();
-            tv_version.setText(getString(R.string.txt_check_version) + versionName);
+            String version = getString(R.string.txt_check_version)+ versionName;
+            tv_version.setText(version);
         } catch (PackageManager.NameNotFoundException e) {
             tv_version.setText(R.string.txt_check_version);
         }

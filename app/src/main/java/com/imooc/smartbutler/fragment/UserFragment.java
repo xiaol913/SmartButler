@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.imooc.smartbutler.R;
 import com.imooc.smartbutler.entity.MyUser;
+import com.imooc.smartbutler.ui.ChangePassActivity;
 import com.imooc.smartbutler.ui.CourierActivity;
 import com.imooc.smartbutler.ui.LoginActivity;
 import com.imooc.smartbutler.ui.PhoneActivity;
@@ -69,6 +70,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     private CustomDialog dialog;
     private CustomDialog upDialog;
+    //修改密码
+    private Button ll_edit_pass;
     //物流查询
     private TextView tv_courier;
     //归属地查询
@@ -115,6 +118,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         profile_image = (CircleImageView) view.findViewById(R.id.profile_image);
         profile_image.setOnClickListener(this);
 
+        ll_edit_pass = (Button) view.findViewById(R.id.ll_edit_pass);
+        ll_edit_pass.setOnClickListener(this);
+
         //初始化Dialog
         dialog = new CustomDialog(getActivity(), 0, 0, R.layout.dialog_photo, R.style.Theme_dialog, Gravity.BOTTOM, R.style.pop_anim_style);
         upDialog = new CustomDialog(getActivity(), 100, 100, R.layout.dialog_uploading, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
@@ -134,7 +140,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         //设置具体的值
         MyUser userInfo = BmobUser.getCurrentUser(MyUser.class);
         et_username.setText(userInfo.getUsername());
-        et_age.setText(userInfo.getAge() + "");
+        String newAge = userInfo.getAge() + "";
+        et_age.setText(newAge);
         et_desc.setText(userInfo.getDesc());
         faceUrl = userInfo.getUserFaceUrl();
         //获取性别
@@ -185,7 +192,10 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     user.setUsername(username);
                     user.setAge(Integer.parseInt(age));
                     //判断性别
-                    user.setSex(rb_boy.isChecked() ? true : false);
+                    if (rb_boy.isChecked())
+                        user.setSex(true);
+                    else
+                        user.setSex(false);
                     if (!TextUtils.isEmpty(desc)) {
                         user.setDesc(desc);
                     } else {
@@ -227,6 +237,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             case R.id.tv_phone:
                 startActivity(new Intent(getActivity(), PhoneActivity.class));
                 break;
+            case R.id.ll_edit_pass:
+                startActivity(new Intent(getActivity(), ChangePassActivity.class));
+                break;
         }
     }
 
@@ -265,10 +278,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     if (data != null) {
                         //拿到图片设置
                         setImageToView(data);
-                        //既然已经设置了图片，我们原先的就应该删除
-                        if (tempFile != null) {
-                            tempFile.delete();
-                        }
                     }
                     break;
             }

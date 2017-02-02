@@ -92,6 +92,9 @@
         <activity
             android:name=".ui.AboutActivity"
             android:label="@string/text_setting_title_7" />
+        <activity
+            android:name=".ui.ChangePassActivity"
+            android:label="@string/text_editor_password" />
 
         <service android:name=".service.SmsService" />
         <service

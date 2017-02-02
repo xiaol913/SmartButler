@@ -9,25 +9,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/text_forget_password"
+        android:text="@string/text_editor_password"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/et_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/text_email"
-        android:inputType="textEmailAddress" />
+        android:hint="@string/text_now_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_new_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_password_again"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/btn_forget_password"
+        android:id="@+id/btn_update_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg"
-        android:text="@string/text_forget_password"
+        android:text="@string/text_editor_password"
         android:textColor="@android:color/white" />
-
 
 </LinearLayout>
